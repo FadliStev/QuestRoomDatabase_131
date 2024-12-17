@@ -10,10 +10,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.actpertemuan7.ui.view.mahasiswa.DestinasiInsert
+import com.example.actpertemuan7.ui.view.mahasiswa.DetailMhsView
+import com.example.actpertemuan7.ui.view.mahasiswa.HomeMhsView
 import com.example.actpertemuan7.ui.view.mahasiswa.InsertMhsView
-import com.example.actpertemuan7.ui.viewmodel.DetailMhsView
-import com.example.actpertemuan7.ui.viewmodel.HomeMhsView
-import com.example.actpertemuan7.ui.viewmodel.UpdateMhsView
+import com.example.actpertemuan7.ui.view.mahasiswa.UpdateMhsView
 
 @Composable
 fun PengelolaHalaman(

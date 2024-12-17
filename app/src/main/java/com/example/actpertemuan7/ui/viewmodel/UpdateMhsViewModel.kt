@@ -41,6 +41,7 @@ class UpdateMhsViewModel(
 ) : ViewModel(){
     var updateUIState by mutableStateOf(MhsUIState())
         private set
+
     private val _nim: String = checkNotNull(savedStateHandle[DestinasiUpdate.NIM])
 
     init {
@@ -109,72 +110,4 @@ fun Mahasiswa.toUIStateMhs(): MhsUIState = MhsUIState(
     mahasiswaEvent = this.toDetailUiEvent(),
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun UpdateMhsView(
-    onBack: () -> Unit,
-    onNavigate: () -> Unit,
-    modifier: Modifier = Modifier,
-    viewModel: UpdateMhsViewModel = viewModel(factory = PenyediaViewModel.Factory)
-){
-    val uiState = viewModel.updateUIState
-    val snackbarHostState = remember {
-        SnackbarHostState()
-    }
-    val coroutineScope = rememberCoroutineScope()
-
-    LaunchedEffect(uiState.snackbarMessage) {
-        println("Launched Effect Triggered")
-        uiState.snackbarMessage?.let { message ->
-            println("Snackbar Message Received: $message")
-            coroutineScope.launch {
-                println("Launching coroutinr for snackbar")
-                snackbarHostState.showSnackbar(
-                    message = message,
-                    duration = SnackbarDuration.Long
-                )
-                viewModel.resetSnackBarMessage()
-            }
-        }
-    }
-
-    Scaffold(
-        modifier = modifier,
-        snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
-        topBar = {
-            TopAppBar(
-                onBack = onBack,
-                judul = "Edit Mahasiswa",
-                showBackButton = true,
-                modifier = modifier
-            )
-        }
-    ) {padding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .padding(16.dp)
-        ) {
-            InsertBodyMhs(
-                uiState = uiState,
-                onValueChange = { updateEvent ->
-                    viewModel.updateState(updateEvent)
-                },
-                onClick = {
-                    coroutineScope.launch {
-                        if(viewModel.validateFields()){
-                        viewModel.updateData()
-                        delay(600)
-                        withContext(Dispatchers.Main){
-                            onNavigate()
-                        }
-                        }
-                    }
-                }
-            )
-        }
-
-    }
-}
 

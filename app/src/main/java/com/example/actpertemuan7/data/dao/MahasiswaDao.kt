@@ -14,10 +14,7 @@ interface MahasiswaDao {
     suspend fun insertMahasiswa(
         mahasiswa: Mahasiswa
     )
-    @Update
-    suspend fun updateMahasiswa(
-        mahasiswa: Mahasiswa
-    )
+
     //Get All Mahasiswa
     @Query("SELECT * FROM mahasiswa ORDER BY nama ASC")
     fun getAllMahasiswa(): Flow<List<Mahasiswa>>
@@ -27,5 +24,8 @@ interface MahasiswaDao {
 
     @Delete
     suspend fun deleteMahasiswa(mahasiswa: Mahasiswa)
+
+    @Update
+    suspend fun updateMahasiswa(mahasiswa: Mahasiswa)
 
 }
