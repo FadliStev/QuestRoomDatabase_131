@@ -126,11 +126,11 @@ fun Mahasiswa.toDetailUiEvent(): MahasiswaEvent{
 
 @Composable
 fun DetailMhsView(
+    modifier: Modifier = Modifier,
     viewModel: DetailMhsViewModel = viewModel(factory = PenyediaViewModel.Factory),
     onBack: () -> Unit = {},
     onEditClick: (String) -> Unit = {},
-    onDeleteClick: () -> Unit = {},
-    modifier: Modifier = Modifier
+    onDeleteClick: () -> Unit = {}
 ){
     Scaffold(
         topBar = {
@@ -297,7 +297,7 @@ fun ComponentDetailMhs(
 private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
 ){
-    AlertDialog(onDismissRequest = { /* Do Nothing*/ }, 
+    AlertDialog(onDismissRequest = { /* Do Nothing*/ },
         title = { Text("Delete Data")},
         text = { Text("Apakah anda yakin ingin menghapus data?")},
         modifier = modifier,
