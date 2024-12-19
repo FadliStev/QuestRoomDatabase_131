@@ -13,3 +13,7 @@
 *Delete Mahasiswa*
 
 ![delete](https://github.com/user-attachments/assets/24610d49-14b7-40fd-9d12-9f374d6dc6a1)
+
+*Update Mahasiswa*
+
+![edit](https://github.com/user-attachments/assets/bd1b97b8-b3b5-4a3c-a163-7239ed2bdb53)
